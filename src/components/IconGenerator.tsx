@@ -23,7 +23,7 @@ const IconGenerator : React.FC<Props> = (props) => {
     const [icons, setIcons] = useState<IconColection>({})
     
     useEffect(() => {
-        if (Object.values(icons).length == lixeiras.length) {
+        if (Object.values(icons).length == (new Set(lixeiras.map(lixeira => lixeira.capacity))).size) {
             props.onFinish(icons)
         }
     }, [icons])
