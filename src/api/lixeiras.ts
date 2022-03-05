@@ -1,16 +1,20 @@
 import { Lixeira } from 'src/reducers/lixeirasSlice'
 
 export interface APILixeira {
-    id : string,
-    local : string,
-    capacity : number
-    local_id : string,
-    latitude : string,
-    longitude : string,
-    descricao : string,
-    tempo_info : string,
-    profundidade : string,
-    coordinate : Array<number>,
+    geometry: {
+        coordinates: Array<number>,
+        type: "Point"
+    },
+    properties: {
+        admin: string,
+        location: string,
+        description: string,
+        capacity: number,
+        distanceCover: number,
+        distanceBottom: number
+    },
+    type: "Feature",
+    id: string
 }
 
 export async function getLixeiras() : Promise<Array<Lixeira>> {
