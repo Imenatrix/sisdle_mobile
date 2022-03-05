@@ -57,13 +57,13 @@ const MapScreen : React.FC = () => {
 
     return (
         <View style={{flex : 1}}>
-            {(Object.values(icons).length != lixeiras.length) &&
+            {(Object.values(icons).length != (new Set(lixeiras.map(lixeira => lixeira.capacity))).size) &&
                 <IconGenerator onFinish={onIconGeneratorFinish}/>
             }
-            {(lixeiraStatus === Status.Pending || Object.values(icons).length != lixeiras.length) &&
+            {(lixeiraStatus === Status.Pending || Object.values(icons).length != (new Set(lixeiras.map(lixeira => lixeira.capacity))).size) &&
                 <Splash/>
             }
-            {(lixeiraStatus === Status.Fulfilled && (permissionStatus == Status.Fulfilled || renderedMap) && Object.values(icons).length == lixeiras.length) && 
+            {(lixeiraStatus === Status.Fulfilled && (permissionStatus == Status.Fulfilled || renderedMap) && Object.values(icons).length == (new Set(lixeiras.map(lixeira => lixeira.capacity))).size) && 
                 <>
                 {!renderedMap && setRenderedMap(true)}
                 <Map
