@@ -18,15 +18,15 @@ export interface APILixeira {
 }
 
 export async function getLixeiras() : Promise<Array<Lixeira>> {
-    const response = await fetch('http://api.ifprinteligente.com.br/sisdle/rest.php/trash')
+    const response = await fetch('http://10.0.2.2:3000/lixeira') // TODO: Change this once the server has an actual domain
     const json = await response.json()
-    return json.map((lixeira : APILixeira) => {
+    return json.features.map((lixeira : APILixeira) => {
         const newLixeira : Lixeira = {
             id : lixeira.id,
-            location : lixeira.local,
-            description : lixeira.descricao,
-            capacity : parseFloat(lixeira.profundidade),
-            coordinates : [parseFloat(lixeira.longitude), parseFloat(lixeira.latitude)],
+            location : lixeira.properties.location,
+            description : lixeira.properties.description,
+            capacity : lixeira.properties.capacity,
+            coordinates : lixeira.geometry.coordinates,
             selected : false
         }
         return newLixeira
