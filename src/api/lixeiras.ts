@@ -18,7 +18,7 @@ export interface APILixeira {
 }
 
 export async function getLixeiras() : Promise<Array<Lixeira>> {
-    const response = await fetch('http://10.0.2.2:3000/lixeira') // TODO: Change this once the server has an actual domain
+    const response = await fetch('https://sisdle-web-n4wfkt47oq-uc.a.run.app/lixeira') // TODO: Change this once the server has an actual domain
     const json = await response.json()
     return json.features.map((lixeira : APILixeira) => {
         const newLixeira : Lixeira = {
