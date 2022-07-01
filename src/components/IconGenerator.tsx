@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
         borderWidth : 1,
         borderRadius : 15,
         overflow : 'hidden',
-        backgroundColor : 'white'
+        backgroundColor : 'white',
+        flexDirection: 'column-reverse'
     },
     txtCapacitometer : {
         display : 'none'
